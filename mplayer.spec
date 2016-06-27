@@ -9,7 +9,7 @@ Version:        1.3.0
 %if 0%{?svn}
 Release:        34.%{?pre}%{?dist}
 %else
-Release:        1%{?dist}
+Release:        2%{?dist}
 %endif
 Summary:        Movie player playing most video formats and DVDs
 License:        GPLv2+ or GPLv3+
@@ -377,6 +377,9 @@ update-desktop-database &>/dev/null || :
 %{_datadir}/mplayer/*.fp
 
 %changelog
+* Sun Jun 26 2016 The UnitedRPMs Project (Key for UnitedRPMs infrastructure) <unitedrpms@protonmail.com> - 1.3.0-2
+- Rebuild with new ffmpeg
+
 
 * Tue Apr 19 2016 David Vásquez <davidjeremias82 AT gmail DOT com> 1.3.0-1
 - Updated to 1.3.0
