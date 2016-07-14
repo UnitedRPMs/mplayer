@@ -6,22 +6,12 @@
 
 Name:           mplayer
 Version:        1.3.0
-%if 0%{?svn}
-Release:        34.%{?pre}%{?dist}
-%else
-Release:        2%{?dist}
-%endif
+Release:        3%{?dist}
 Summary:        Movie player playing most video formats and DVDs
 License:        GPLv2+ or GPLv3+
 URL:            http://www.mplayerhq.hu/
-%if 0%{?svn}
-# run ./mplayer-snapshot.sh to get this
-Source0:        mplayer-export-%{svnbuild}.tar.bz2
-%else
-Source0:        http://www.mplayerhq.hu/MPlayer/releases/MPlayer-%{version}%{?pre}.tar.xz
-%endif
+Source0:        http://www.mplayerhq.hu/MPlayer/releases/MPlayer-%{version}.tar.xz
 Source1:        http://www.mplayerhq.hu/MPlayer/skins/Blue-1.11.tar.bz2
-Source10:       mplayer-snapshot.sh
 # set defaults for Fedora
 Patch1:         mplayer-config.patch
 # use system FFmpeg libraries and use roff include statements instead of symlinks
@@ -377,9 +367,12 @@ update-desktop-database &>/dev/null || :
 %{_datadir}/mplayer/*.fp
 
 %changelog
+
+* Thu Jul 07 2016 David Vásquez <davidjeremias82 AT gmail DOT com> 1.3.0-3
+- Rebuilt for FFmpeg 3.1 
+
 * Sun Jun 26 2016 The UnitedRPMs Project (Key for UnitedRPMs infrastructure) <unitedrpms@protonmail.com> - 1.3.0-2
 - Rebuild with new ffmpeg
-
 
 * Tue Apr 19 2016 David Vásquez <davidjeremias82 AT gmail DOT com> 1.3.0-1
 - Updated to 1.3.0
