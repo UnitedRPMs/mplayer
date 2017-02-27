@@ -1,0 +1,8 @@
+BUILD/*
+BUILDROOT/*
+RPMS/*
+SPECS/*
+SRPMS/*
+mplayer*.tar.bz2
+MPlayer*.tar.xz
+Blue*.tar.bz2
