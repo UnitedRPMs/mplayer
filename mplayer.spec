@@ -52,7 +52,7 @@ BuildRequires:  libdv-devel
 BuildRequires:  libdvdnav-devel >= 4.1.3-1
 BuildRequires:  libjpeg-devel
 BuildRequires:  libmpeg2-devel
-BuildRequires:  libmpg123-devel
+BuildRequires:  mpg123-devel
 BuildRequires:  librtmp-devel
 BuildRequires:  libtheora-devel
 BuildRequires:  libvdpau-devel
