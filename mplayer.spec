@@ -1,12 +1,9 @@
 %define         codecdir %{_libdir}/codecs
-#define         pre 20150505svn
-#define         svn 1
-#define         svnbuild 2015-05-05
 %define         faad2min 1:2.6.1
 
 Name:           mplayer
 Version:        1.3.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Movie player playing most video formats and DVDs
 License:        GPLv2+ or GPLv3+
 URL:            http://www.mplayerhq.hu/
@@ -367,6 +364,9 @@ update-desktop-database &>/dev/null || :
 %{_datadir}/mplayer/*.fp
 
 %changelog
+
+* Wed Mar 15 2017 Unitedrpms Project <unitedrpms AT protonmail DOT com> 1.3.0-4  
+- Automatic Mass Rebuild
 
 * Thu Jul 07 2016 David Vásquez <davidjeremias82 AT gmail DOT com> 1.3.0-3
 - Rebuilt for FFmpeg 3.1 
