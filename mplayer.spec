@@ -3,7 +3,7 @@
 
 Name:           mplayer
 Version:        1.3.0
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        Movie player playing most video formats and DVDs
 License:        GPLv2+ or GPLv3+
 URL:            http://www.mplayerhq.hu/
@@ -364,6 +364,9 @@ update-desktop-database &>/dev/null || :
 %{_datadir}/mplayer/*.fp
 
 %changelog
+
+* Tue Apr 18 2017 Unitedrpms Project <unitedrpms AT protonmail DOT com> 1.3.0-7  
+- Automatic Mass Rebuild
 
 * Sat Mar 18 2017 Unitedrpms Project <unitedrpms AT protonmail DOT com> 1.3.0-6  
 - Rebuilt for libbluray
@@ -899,6 +902,9 @@ update-desktop-database &>/dev/null || :
 - 2006-05-13 CVS snapshot.
 - Make audio output default to ALSA in default config (#970).
 - Trim pre-2005 %%changelog entries.
+
+* Tue Apr 18 2017 Unitedrpms Project <unitedrpms AT protonmail DOT com> 1.3.0-7  
+- Automatic Mass Rebuild
 
 * Sat May 06 2006 Noa Resare <noa@resare.com>
 - Move doc to a separate package (#960).
