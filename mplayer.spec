@@ -1,5 +1,6 @@
 %define         codecdir %{_libdir}/codecs
 %define         faad2min 1:2.6.1
+%global debug_package %{nil}
 
 Name:           mplayer
 Version:        1.3.0
