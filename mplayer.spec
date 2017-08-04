@@ -1,10 +1,9 @@
 %define         codecdir %{_libdir}/codecs
 %define         faad2min 1:2.6.1
-%global debug_package %{nil}
 
 Name:           mplayer
 Version:        1.3.0
-Release:        8%{?dist}
+Release:        9%{?dist}
 Summary:        Movie player playing most video formats and DVDs
 License:        GPLv2+ or GPLv3+
 URL:            http://www.mplayerhq.hu/
@@ -365,6 +364,9 @@ update-desktop-database &>/dev/null || :
 %{_datadir}/mplayer/*.fp
 
 %changelog
+
+* Thu Aug 03 2017 Unitedrpms Project <unitedrpms AT protonmail DOT com> 1.3.0-9  
+- Automatic Mass Rebuild
 
 * Mon Jul 31 2017 Unitedrpms Project <unitedrpms AT protonmail DOT com> 1.3.0-8  
 - Automatic Mass Rebuild
