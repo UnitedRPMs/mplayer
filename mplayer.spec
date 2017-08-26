@@ -1,3 +1,5 @@
+%global debug_package %{nil}
+
 %define         codecdir %{_libdir}/codecs
 %define         faad2min 1:2.6.1
 
