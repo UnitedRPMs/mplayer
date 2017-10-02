@@ -5,7 +5,7 @@
 
 Name:           mplayer
 Version:        1.3.0
-Release:        12%{?dist}
+Release:        13%{?dist}
 Summary:        Movie player playing most video formats and DVDs
 License:        GPLv2+ or GPLv3+
 URL:            http://www.mplayerhq.hu/
@@ -366,6 +366,9 @@ update-desktop-database &>/dev/null || :
 %{_datadir}/mplayer/*.fp
 
 %changelog
+
+* Sat Sep 30 2017 Unitedrpms Project <unitedrpms AT protonmail DOT com> 1.3.0-13  
+- Automatic Mass Rebuild
 
 * Sat Sep 23 2017 Unitedrpms Project <unitedrpms AT protonmail DOT com> 1.3.0-12  
 - Automatic Mass Rebuild
