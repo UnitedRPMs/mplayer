@@ -199,6 +199,8 @@ rm -rf ffmpeg
 %patch1 -p0
 %patch2 -p1
 
+# vdpau FIX
+sed -i '/\#include <strings.h>/a #include <vdpau/vdpau_x11.h>' libvo/vo_vdpau.c
 
 mkdir GUI
 cp -a `ls -1|grep -v GUI` GUI/
