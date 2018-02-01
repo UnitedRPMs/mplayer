@@ -1,5 +1,5 @@
 --- a/etc/example.conf	2012-03-03 05:07:04.000000000 -0600
-+++ b/example1.conf	2016-04-19 23:57:47.435319847 -0600
++++ b/etc/example1.conf	2016-04-19 23:57:47.435319847 -0600
 @@ -1,7 +1,7 @@
  #
  # MPlayer configuration file

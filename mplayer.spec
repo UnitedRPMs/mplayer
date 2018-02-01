@@ -367,7 +367,7 @@ update-desktop-database &>/dev/null || :
 
 %changelog
 
-* Thu Feb 01 2018 Unitedrpms Project <unitedrpms AT protonmail DOT com> 1.3.0-16.svn38017
+* Thu Feb 01 2018 Unitedrpms Project <unitedrpms AT protonmail DOT com> 1.3.0-16
 - Updated to current svn revision
 
 * Wed Oct 18 2017 Unitedrpms Project <unitedrpms AT protonmail DOT com> 1.3.0-15  
