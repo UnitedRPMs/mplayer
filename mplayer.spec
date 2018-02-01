@@ -3,9 +3,16 @@
 %define         codecdir %{_libdir}/codecs
 %define         faad2min 1:2.6.1
 
+# Globals for svn 
+# Get current revision:
+# svn info svn://svn.mplayerhq.hu/mplayer/trunk 
+%global svn_rev 38017
+%global svn_url svn://svn.mplayerhq.hu/mplayer/trunk
+%global svn_ver .svn%{svn_rev}
+
 Name:           mplayer
 Version:        1.3.0
-Release:        15%{?dist}
+Release:        16%{?dist}
 Summary:        Movie player playing most video formats and DVDs
 License:        GPLv2+ or GPLv3+
 URL:            http://www.mplayerhq.hu/
@@ -188,16 +195,7 @@ This package contains various scripts from MPlayer TOOLS directory.
     --confdir=/etc/mplayer \\\
 
 %prep
-%if 0%{?svn}
-%setup -q -n mplayer-export-%{svnbuild}
-%else
-%setup -q -n MPlayer-%{version}%{?pre}
-rm -rf ffmpeg
-%endif
-
-%patch -p0
-%patch1 -p0
-%patch2 -p1
+%autosetup -n %{name}-%{svn_rev} -p1
 
 # vdpau FIX
 sed -i '/\#include <strings.h>/a #include <vdpau/vdpau_x11.h>' libvo/vo_vdpau.c
@@ -368,6 +366,9 @@ update-desktop-database &>/dev/null || :
 %{_datadir}/mplayer/*.fp
 
 %changelog
+
+* Thu Feb 01 2018 Unitedrpms Project <unitedrpms AT protonmail DOT com> 1.3.0-16.svn38017
+- Updated to current svn revision
 
 * Wed Oct 18 2017 Unitedrpms Project <unitedrpms AT protonmail DOT com> 1.3.0-15  
 - Automatic Mass Rebuild
