@@ -3,6 +3,7 @@ BUILDROOT/*
 RPMS/*
 SPECS/*
 SRPMS/*
-mplayer*.tar.bz2
-MPlayer*.tar.xz
-Blue*.tar.bz2
+mplayer*.tar.gz
+*.tar.xz
+*.tar.bz2
+

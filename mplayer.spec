@@ -16,8 +16,29 @@ Release:        16%{?dist}
 Summary:        Movie player playing most video formats and DVDs
 License:        GPLv2+ or GPLv3+
 URL:            http://www.mplayerhq.hu/
-Source0:        http://www.mplayerhq.hu/MPlayer/releases/MPlayer-%{version}.tar.xz
-Source1:        http://www.mplayerhq.hu/MPlayer/skins/Blue-1.11.tar.bz2
+Source0:	%{name}-%{svn_rev}.tar.gz
+Source1:        http://www.mplayerhq.hu/MPlayer/skins/Blue-1.13.tar.bz2
+# Extra skins
+Source2:	http://www.mplayerhq.hu/MPlayer/skins/iTunes-1.2.tar.bz2
+Source3:	http://www.mplayerhq.hu/MPlayer/skins/CornerMP-aqua-1.5.tar.bz2
+Source4:	http://www.mplayerhq.hu/MPlayer/skins/Cyrus-1.3.tar.bz2
+Source5:	http://www.mplayerhq.hu/MPlayer/skins/Industrial-1.1.tar.bz2
+Source6:	http://www.mplayerhq.hu/MPlayer/skins/MidnightLove-1.7.tar.bz2
+Source7:	http://www.mplayerhq.hu/MPlayer/skins/OpenDoh-1.2.tar.bz2
+Source8:	http://www.mplayerhq.hu/MPlayer/skins/QPlayer-1.3.tar.bz2
+Source9:	http://www.mplayerhq.hu/MPlayer/skins/QuickSilver-1.1.tar.bz2
+Source10:	http://www.mplayerhq.hu/MPlayer/skins/XFce4-1.1.tar.bz2
+Source11:	http://www.mplayerhq.hu/MPlayer/skins/bluecurve-1.4.tar.bz2
+Source12:	http://www.mplayerhq.hu/MPlayer/skins/brushedGnome-1.2.tar.bz2
+Source13:	http://www.mplayerhq.hu/MPlayer/skins/clearplayer-0.10.tar.bz2
+Source14:	http://www.mplayerhq.hu/MPlayer/skins/mentalic-1.4.tar.bz2
+Source15:	http://www.mplayerhq.hu/MPlayer/skins/pcland-1.1.tar.bz2
+Source16:	http://www.mplayerhq.hu/MPlayer/skins/proton-1.3.tar.bz2
+Source17:	http://www.mplayerhq.hu/MPlayer/skins/smoothwebby-1.2.tar.bz2
+Source18:	http://www.mplayerhq.hu/MPlayer/skins/ultrafina-1.2.tar.bz2
+Source19:	http://www.mplayerhq.hu/MPlayer/skins/webby-1.4.tar.bz2
+Source20:	http://www.mplayerhq.hu/MPlayer/skins/xanim-1.8.tar.bz2
+
 # set defaults for Fedora
 Patch1:         mplayer-config.patch
 # use system FFmpeg libraries and use roff include statements instead of symlinks
@@ -87,13 +108,13 @@ BuildRequires: libsmbclient-devel
 # BuildRequires: svgalib-devel
 # BuildRequires: xmms-devel
 
-%if 0%{?svn}
+
 # for XML docs, SVN only
 BuildRequires:  docbook-dtds
 BuildRequires:  docbook-style-xsl
 BuildRequires:  libxml2
 BuildRequires:  libxslt
-%endif
+
 # new make requires
 BuildRequires:  opencore-amr-devel
 BuildRequires:  libmng-devel
@@ -218,15 +239,12 @@ popd
 
 %{__make} V=1 %{?_smp_mflags}
 
-%if 0%{?svn}
-# build HTML documentation from XML files 
-%{__make} html-chunked
-%endif
-
 
 %ifarch i686
 sed 's|-march=i486|-march=i686|g' -i config.mak
 %endif
+
+%{__make} html-chunked
 
 %install
 
@@ -249,6 +267,7 @@ mkdir -p $RPM_BUILD_ROOT%{_datadir}/mplayer
 install -pm 644 TOOLS/*.fp $RPM_BUILD_ROOT%{_datadir}/mplayer/
 
 # Clean up documentation
+# Clean up documentation
 mkdir doc
 cp -pR DOCS/* doc/
 rm -r doc/man doc/xml doc/README
@@ -260,19 +279,25 @@ install -Dpm 644 etc/example.conf \
     $RPM_BUILD_ROOT%{_sysconfdir}/mplayer/mplayer.conf
 
 install -dm 755 %{buildroot}/%{_sysconfdir}/mplayer/
-install -m 0644 %{_builddir}/MPlayer-1.3.0/etc/*.conf %{buildroot}/%{_sysconfdir}/mplayer/
+install -m 0644 %{_builddir}/%{name}-%{svn_rev}/etc/*.conf %{buildroot}/%{_sysconfdir}/mplayer/
 
 # desktop file (FS#14770)
-install -Dm644 %{_builddir}/MPlayer-1.3.0/etc/mplayer.desktop %{buildroot}/usr/share/applications/mplayer.desktop
-install -Dm644 %{_builddir}/MPlayer-1.3.0/etc/mplayer256x256.png %{buildroot}/usr/share/pixmaps/mplayer.png
+install -Dpm 644 etc/mplayer.desktop %{buildroot}/usr/share/applications/mplayer.desktop
+install -Dpm 644 etc/mplayer256x256.png %{buildroot}/usr/share/pixmaps/mplayer.png
 
 # GUI mplayer
 install -pm 755 GUI/%{name} $RPM_BUILD_ROOT%{_bindir}/gmplayer
 
 # Default skin
 install -dm 755 $RPM_BUILD_ROOT%{_datadir}/mplayer/skins
-tar xjC $RPM_BUILD_ROOT%{_datadir}/mplayer/skins --exclude=.svn -f %{SOURCE1}
-ln -s Blue $RPM_BUILD_ROOT%{_datadir}/mplayer/skins/default
+tar -jxvf %{S:1} -C $RPM_BUILD_ROOT%{_datadir}/mplayer/skins/ 
+ln -sf Blue $RPM_BUILD_ROOT%{_datadir}/mplayer/skins/default
+
+# Extra skins
+for skins in %{S:2} %{S:3} %{S:4} %{S:5} %{S:6} %{S:7} %{S:8} %{S:9} %{S:10} %{S:11} %{S:12} %{S:13} %{S:14} %{S:15} %{S:16} %{S:17} %{S:18} %{S:19} %{S:20} 
+do
+tar -jxvf $skins -C $RPM_BUILD_ROOT/%{_datadir}/mplayer/skins/ 
+done
 
 # Icons
 for iconsize in 16x16 22x22 24x24 32x32 48x48 256x256
