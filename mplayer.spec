@@ -10,6 +10,13 @@
 %global svn_url svn://svn.mplayerhq.hu/mplayer/trunk
 %global svn_ver .svn%{svn_rev}
 
+## dynamic linking to libvpx is irrelevant when using dynamic ffmpeg
+%if 0%{?fedora} >= 28
+%bcond_with _vpx
+%else
+%bcond_without _vpx
+%endif
+
 Name:           mplayer
 Version:        1.3.0
 Release:        16%{?dist}
@@ -119,7 +126,9 @@ BuildRequires:  libxslt
 BuildRequires:  opencore-amr-devel
 BuildRequires:  libmng-devel
 BuildRequires:  schroedinger-devel
+%if %{with _vpx}
 BuildRequires:  libvpx-devel
+%endif
 BuildRequires:  live555-devel
 BuildRequires:  git
 BuildRequires:  opus-devel
