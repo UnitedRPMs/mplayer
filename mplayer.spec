@@ -19,7 +19,7 @@
 
 Name:           mplayer
 Version:        1.3.0
-Release:        17%{?dist}
+Release:        18%{?dist}
 Summary:        Movie player playing most video formats and DVDs
 License:        GPLv2+ or GPLv3+
 URL:            http://www.mplayerhq.hu/
@@ -61,7 +61,7 @@ BuildRequires:  alsa-lib-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  enca-devel
 BuildRequires:  faad2-devel >= %{faad2min}
-BuildRequires:  ffmpeg-devel >= 0.10
+BuildRequires:  ffmpeg-devel >= 4.0
 BuildRequires:  fontconfig-devel
 BuildRequires:  freetype-devel >= 2.0.9
 BuildRequires:  fribidi-devel
@@ -400,6 +400,9 @@ update-desktop-database &>/dev/null || :
 %{_datadir}/mplayer/*.fp
 
 %changelog
+
+* Thu Apr 26 2018 Unitedrpms Project <unitedrpms AT protonmail DOT com> 1.3.0-18  
+- Automatic Mass Rebuild
 
 * Mon Apr 23 2018 Unitedrpms Project <unitedrpms AT protonmail DOT com> 1.3.0-17
 - Updated to current svn revision
