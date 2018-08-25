@@ -99,7 +99,7 @@ BuildRequires:  twolame-devel
 BuildRequires:  x264-devel >= 0.0.0-0.28
 BuildRequires:  xvidcore-devel >= 0.9.2
 BuildRequires:  yasm
-
+BuildRequires:  gcc-c++
 
 # BuildRequires: arts-devel
 BuildRequires: libXxf86dga-devel
