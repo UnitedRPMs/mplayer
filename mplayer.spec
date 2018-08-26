@@ -6,7 +6,7 @@
 # Globals for svn 
 # Get current revision:
 # svn info svn://svn.mplayerhq.hu/mplayer/trunk 
-%global svn_rev 38101
+%global svn_rev 38115
 %global svn_url svn://svn.mplayerhq.hu/mplayer/trunk
 %global svn_ver .svn%{svn_rev}
 
@@ -19,7 +19,7 @@
 
 Name:           mplayer
 Version:        1.3.0
-Release:        19%{?dist}
+Release:        20%{?dist}
 Summary:        Movie player playing most video formats and DVDs
 License:        GPLv2+ or GPLv3+
 URL:            http://www.mplayerhq.hu/
@@ -400,6 +400,9 @@ update-desktop-database &>/dev/null || :
 %{_datadir}/mplayer/*.fp
 
 %changelog
+
+* Sun Aug 26 2018 Unitedrpms Project <unitedrpms AT protonmail DOT com> 1.3.0-20  
+- Updated to current svn revision
 
 * Mon Jun 18 2018 Unitedrpms Project <unitedrpms AT protonmail DOT com> 1.3.0-19  
 - Rebuild for libass
