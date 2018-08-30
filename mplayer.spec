@@ -220,7 +220,6 @@ This package contains various scripts from MPlayer TOOLS directory.
     --enable-xvmc \\\
     --enable-radio \\\
     --enable-radio-capture \\\
-    --enable-smb \\\
     --language=all \\\
     --confdir=/etc/mplayer \\\
 
