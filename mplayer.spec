@@ -6,7 +6,7 @@
 # Globals for svn 
 # Get current revision:
 # svn info svn://svn.mplayerhq.hu/mplayer/trunk 
-%global svn_rev 38115
+%global svn_rev 38117
 %global svn_url svn://svn.mplayerhq.hu/mplayer/trunk
 %global svn_ver .svn%{svn_rev}
 
@@ -19,7 +19,7 @@
 
 Name:           mplayer
 Version:        1.3.0
-Release:        21%{?dist}
+Release:        22%{?dist}
 Summary:        Movie player playing most video formats and DVDs
 License:        GPLv2+ or GPLv3+
 URL:            http://www.mplayerhq.hu/
@@ -61,7 +61,7 @@ BuildRequires:  alsa-lib-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  enca-devel
 BuildRequires:  faad2-devel >= %{faad2min}
-BuildRequires:  ffmpeg-devel >= 4.0
+BuildRequires:  ffmpeg-devel >= 4.1
 BuildRequires:  fontconfig-devel
 BuildRequires:  freetype-devel >= 2.0.9
 BuildRequires:  fribidi-devel
@@ -399,6 +399,10 @@ update-desktop-database &>/dev/null || :
 %{_datadir}/mplayer/*.fp
 
 %changelog
+
+* Thu Dec 06 2018 Unitedrpms Project <unitedrpms AT protonmail DOT com> 1.3.0-22
+- Updated to current svn revision
+- Rebuilt for ffmpeg  
 
 * Fri Oct 05 2018 Unitedrpms Project <unitedrpms AT protonmail DOT com> 1.3.0-21  
 - Automatic Mass Rebuild
