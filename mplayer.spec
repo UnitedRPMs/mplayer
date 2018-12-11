@@ -318,6 +318,18 @@ done
 # Codec dir
 install -dm 755 $RPM_BUILD_ROOT%{codecdir}
 
+
+
+#fix mangling
+sed -i 's|/bin/bash|/usr/bin/bash|g' $RPM_BUILD_ROOT/usr/bin/divx2svcd
+sed -i 's|/bin/bash|/usr/bin/bash|g' $RPM_BUILD_ROOT/usr/bin/mpconsole
+sed -i 's|/bin/bash|/usr/bin/bash|g' $RPM_BUILD_ROOT/usr/bin/aconvert
+sed -i 's|/bin/bash|/usr/bin/bash|g' $RPM_BUILD_ROOT/usr/bin/qepdvcd
+sed -i 's|/bin/bash|/usr/bin/bash|g' $RPM_BUILD_ROOT/usr/bin/midentify
+sed -i 's|/bin/bash|/usr/bin/bash|g' $RPM_BUILD_ROOT/usr/bin/mencvcd
+sed -i 's|/bin/bash|/usr/bin/bash|g' $RPM_BUILD_ROOT/usr/bin/subsearch
+sed -i 's|/usr/bin/env python|/usr/bin/python3|g' $RPM_BUILD_ROOT/usr/bin/vobshift
+
 %post gui
 gtk-update-icon-cache -qf %{_datadir}/icons/hicolor &>/dev/null || :
 update-desktop-database &>/dev/null || :
