@@ -6,7 +6,7 @@
 # Globals for svn 
 # Get current revision:
 # svn info svn://svn.mplayerhq.hu/mplayer/trunk 
-%global svn_rev 38120
+%global svn_rev 38125
 %global svn_url svn://svn.mplayerhq.hu/mplayer/trunk
 %global svn_ver .svn%{svn_rev}
 
@@ -19,7 +19,7 @@
 
 Name:           mplayer
 Version:        1.3.1
-Release:        8%{?dist}
+Release:        9%{?dist}
 Summary:        Movie player playing most video formats and DVDs
 License:        GPLv2+ or GPLv3+
 URL:            http://www.mplayerhq.hu/
@@ -411,6 +411,9 @@ update-desktop-database &>/dev/null || :
 %{_datadir}/mplayer/*.fp
 
 %changelog
+
+* Wed Apr 10 2019 Unitedrpms Project <unitedrpms AT protonmail DOT com> 1.3.1-9
+- Updated to current svn revision
 
 * Fri Mar 22 2019 Unitedrpms Project <unitedrpms AT protonmail DOT com> 1.3.1-8
 - Rebuilt for x264
