@@ -225,7 +225,7 @@ This package contains various scripts from MPlayer TOOLS directory.
     --confdir=/etc/mplayer \\\
 
 %prep
-%autosetup -n %{name}-%{svn_rev} 
+%autosetup -n %{name}-%{svn_rev} -p1
 
 # vdpau FIX
 sed -i '/\#include <strings.h>/a #include <vdpau/vdpau_x11.h>' libvo/vo_vdpau.c
