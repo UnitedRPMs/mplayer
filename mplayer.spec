@@ -6,7 +6,7 @@
 # Globals for svn 
 # Get current revision:
 # svn info svn://svn.mplayerhq.hu/mplayer/trunk 
-%global svn_rev 38135
+%global svn_rev 38151
 %global svn_url svn://svn.mplayerhq.hu/mplayer/trunk
 %global svn_ver .svn%{svn_rev}
 
@@ -19,7 +19,7 @@
 
 Name:           mplayer
 Version:        1.4
-Release:        7%{?dist}
+Release:        8%{?dist}
 Summary:        Movie player playing most video formats and DVDs
 License:        GPLv2+ or GPLv3+
 URL:            http://www.mplayerhq.hu/
@@ -46,10 +46,11 @@ Source18:	http://www.mplayerhq.hu/MPlayer/skins/ultrafina-1.2.tar.bz2
 Source19:	http://www.mplayerhq.hu/MPlayer/skins/webby-1.4.tar.bz2
 Source20:	http://www.mplayerhq.hu/MPlayer/skins/xanim-1.8.tar.bz2
 
+
+# use system FFmpeg libraries and use roff include statements instead of symlinks
+Patch0:          mplayer-ffmpeg.patch
 # set defaults for Fedora
 Patch1:         mplayer-config.patch
-# use system FFmpeg libraries and use roff include statements instead of symlinks
-Patch:          mplayer-ffmpeg.patch
 # Include Samba
 Patch2:         include-samba-4.0.patch
 
@@ -224,7 +225,7 @@ This package contains various scripts from MPlayer TOOLS directory.
     --confdir=/etc/mplayer \\\
 
 %prep
-%autosetup -n %{name}-%{svn_rev} -p1
+%autosetup -n %{name}-%{svn_rev} 
 
 # vdpau FIX
 sed -i '/\#include <strings.h>/a #include <vdpau/vdpau_x11.h>' libvo/vo_vdpau.c
@@ -411,6 +412,9 @@ update-desktop-database &>/dev/null || :
 %{_datadir}/mplayer/*.fp
 
 %changelog
+
+* Wed Sep 11 2019 Unitedrpms Project <unitedrpms AT protonmail DOT com> 1.4-8
+- Updated to current svn revision
 
 * Thu Apr 18 2019 Unitedrpms Project <unitedrpms AT protonmail DOT com> 1.4-7
 - Updated to 1.4
