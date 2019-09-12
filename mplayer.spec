@@ -299,13 +299,13 @@ install -pm 755 GUI/%{name} $RPM_BUILD_ROOT%{_bindir}/gmplayer
 
 # Default skin
 install -dm 755 $RPM_BUILD_ROOT%{_datadir}/mplayer/skins
-tar -jxvf %{S:1} -C $RPM_BUILD_ROOT%{_datadir}/mplayer/skins/ 
+tar -xvjf %{S:1} -C $RPM_BUILD_ROOT%{_datadir}/mplayer/skins/ 
 ln -sf Blue $RPM_BUILD_ROOT%{_datadir}/mplayer/skins/default
 
 # Extra skins
 for skins in %{S:2} %{S:3} %{S:4} %{S:5} %{S:6} %{S:7} %{S:8} %{S:9} %{S:10} %{S:11} %{S:12} %{S:13} %{S:14} %{S:15} %{S:16} %{S:17} %{S:18} %{S:19} %{S:20} 
 do
-tar -jxvf $skins -C $RPM_BUILD_ROOT/%{_datadir}/mplayer/skins/ 
+tar -xvjf $skins -C $RPM_BUILD_ROOT/%{_datadir}/mplayer/skins/ 
 done
 
 # Icons
