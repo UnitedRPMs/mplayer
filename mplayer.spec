@@ -1,12 +1,12 @@
 %global debug_package %{nil}
 
 %define         codecdir %{_libdir}/codecs
-%define         faad2min 1:2.6.1
+%define         faad2min 1:2.9.1
 
 # Globals for svn 
 # Get current revision:
 # svn info svn://svn.mplayerhq.hu/mplayer/trunk 
-%global svn_rev 38151
+%global svn_rev 38152
 %global svn_url svn://svn.mplayerhq.hu/mplayer/trunk
 %global svn_ver .svn%{svn_rev}
 
@@ -19,7 +19,7 @@
 
 Name:           mplayer
 Version:        1.4
-Release:        8%{?dist}
+Release:        9%{?dist}
 Summary:        Movie player playing most video formats and DVDs
 License:        GPLv2+ or GPLv3+
 URL:            http://www.mplayerhq.hu/
@@ -412,6 +412,9 @@ update-desktop-database &>/dev/null || :
 %{_datadir}/mplayer/*.fp
 
 %changelog
+
+* Fri Nov 08 2019 Unitedrpms Project <unitedrpms AT protonmail DOT com> 1.4-9
+- Rebuilt for faad2
 
 * Wed Sep 11 2019 Unitedrpms Project <unitedrpms AT protonmail DOT com> 1.4-8
 - Updated to current svn revision
