@@ -329,7 +329,7 @@ sed -i 's|/bin/bash|/usr/bin/bash|g' $RPM_BUILD_ROOT/usr/bin/qepdvcd
 sed -i 's|/bin/bash|/usr/bin/bash|g' $RPM_BUILD_ROOT/usr/bin/midentify
 sed -i 's|/bin/bash|/usr/bin/bash|g' $RPM_BUILD_ROOT/usr/bin/mencvcd
 sed -i 's|/bin/bash|/usr/bin/bash|g' $RPM_BUILD_ROOT/usr/bin/subsearch
-sed -i 's|/bin/bash|/usr/bin/bash|g' $RPM_BUILD_ROOT/usr/bin/aconvert
+sed -i 's|/bin/sh|/usr/bin/bash|g' $RPM_BUILD_ROOT/usr/bin/aconvert
 sed -i 's|/usr/bin/env python|/usr/bin/python3|g' $RPM_BUILD_ROOT/usr/bin/vobshift
 
 %post gui
