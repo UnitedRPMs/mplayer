@@ -327,7 +327,7 @@ sed -i 's|/bin/sh|/usr/bin/sh|g' $RPM_BUILD_ROOT/usr/bin/mpconsole
 
 sed -i 's|/bin/sh|/usr/bin/sh|g' $RPM_BUILD_ROOT/usr/bin/qepdvcd
 sed -i 's|/bin/sh|/usr/bin/sh|g' $RPM_BUILD_ROOT/usr/bin/midentify
-sed -i 's|/bin/sh|/usr/bin/sh|g' $RPM_BUILD_ROOT/usr/bin/mencvcd
+sed -i 's|/bin/bash|/usr/bin/bash|g' $RPM_BUILD_ROOT/usr/bin/mencvcd
 
 sed -i 's|/bin/sh|/usr/bin/sh|g' $RPM_BUILD_ROOT/usr/bin/aconvert
 sed -i 's|/bin/sh|/usr/bin/sh|g' $RPM_BUILD_ROOT/usr/bin/subsearch
