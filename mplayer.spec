@@ -45,7 +45,7 @@ Source17:	http://www.mplayerhq.hu/MPlayer/skins/smoothwebby-1.2.tar.bz2
 Source18:	http://www.mplayerhq.hu/MPlayer/skins/ultrafina-1.2.tar.bz2
 Source19:	http://www.mplayerhq.hu/MPlayer/skins/webby-1.4.tar.bz2
 Source20:	http://www.mplayerhq.hu/MPlayer/skins/xanim-1.8.tar.bz2
-
+Source21:	hu.mplayerhq.mplayer.metainfo.xml
 
 # use system FFmpeg libraries and use roff include statements instead of symlinks
 Patch0:          mplayer-ffmpeg.patch
@@ -142,6 +142,7 @@ BuildRequires:  libdvdnav-devel
 Obsoletes:      mplayer-fonts
 Requires:       faad2-libs >= %{faad2min}
 Requires:       mplayer-common = %{version}-%{release}
+Recommends:	mplayer-gui = %{version}-%{release}
 
 %description
 MPlayer is a movie player that plays most MPEG, VOB, AVI, OGG/OGM,
@@ -319,7 +320,8 @@ done
 # Codec dir
 install -dm 755 $RPM_BUILD_ROOT%{codecdir}
 
-
+# Appdata
+install -Dm 0644 %{S:21} %{buildroot}/%{_metainfodir}/hu.mplayerhq.mplayer.metainfo.xml
 
 #fix mangling
 sed -i 's|/bin/bash|/usr/bin/bash|g' $RPM_BUILD_ROOT/usr/bin/divx2svcd
@@ -374,6 +376,7 @@ update-desktop-database &>/dev/null || :
 %{_datadir}/icons/hicolor/*/apps/mplayer.png
 %{_datadir}/mplayer/skins/
 %{_datadir}/pixmaps/mplayer.png
+%{_metainfodir}/hu.mplayerhq.mplayer.metainfo.xml
 
 %files -n mencoder
 %{_bindir}/mencoder

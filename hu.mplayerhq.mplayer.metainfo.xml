@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>hu.mplayerhq.mplayer</id>
+  
+  <name>mplayer</name>
+  <summary>Movie player playing most video formats and DVDs</summary>
+  
+  <metadata_license>FSFAP</metadata_license>
+  <project_license>GPL-2.0+</project_license>
+  
+  <description>
+    <p>
+      MPlayer is a movie player that plays most MPEG, VOB, AVI, OGG/OGM, VIVO, ASF/WMA/WMV, QT/MOV/MP4, FLI, RM, NuppelVideo, yuv4mpeg, FILM, RoQ, and PVA files. You can also use it to watch VCDs, SVCDs, DVDs, 3ivx, RealMedia, and DivX movies.
+    </p>
+    <p>
+      It supports a wide range of output drivers including X11, XVideo, DGA, OpenGL, SVGAlib, fbdev, AAlib, DirectFB etc. There are also nice antialiased shaded subtitles and OSD.
+    </p>
+  </description>
+  
+  <launchable type="desktop-id">mplayer.desktop</launchable>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://screenshots.debian.net/screenshots/000/013/456/large.png</image>
+    </screenshot>
+  </screenshots>
+</component>
