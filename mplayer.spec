@@ -322,7 +322,7 @@ install -dm 755 $RPM_BUILD_ROOT%{codecdir}
 
 
 #fix mangling
-sed -i 's|/bin/sh|/usr/bin/sh|g' $RPM_BUILD_ROOT/usr/bin/divx2svcd
+sed -i 's|/bin/bash|/usr/bin/bash|g' $RPM_BUILD_ROOT/usr/bin/divx2svcd
 sed -i 's|/bin/sh|/usr/bin/sh|g' $RPM_BUILD_ROOT/usr/bin/mpconsole
 
 sed -i 's|/bin/sh|/usr/bin/sh|g' $RPM_BUILD_ROOT/usr/bin/qepdvcd
