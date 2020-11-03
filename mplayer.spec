@@ -6,7 +6,7 @@
 # Globals for svn 
 # Get current revision:
 # svn info svn://svn.mplayerhq.hu/mplayer/trunk 
-%global svn_rev 38197
+%global svn_rev 38202
 %global svn_url svn://svn.mplayerhq.hu/mplayer/trunk
 %global svn_ver .svn%{svn_rev}
 
@@ -19,7 +19,7 @@
 
 Name:           mplayer
 Version:        1.4
-Release:        13%{?dist}
+Release:        14%{?dist}
 Summary:        Movie player playing most video formats and DVDs
 License:        GPLv2+ or GPLv3+
 URL:            http://www.mplayerhq.hu/
@@ -136,8 +136,13 @@ BuildRequires:  opus-devel
 BuildRequires:  rtmpdump
 BuildRequires:  gnutls-devel
 BuildRequires:  libdvdcss-devel
-BuildRequires:  libdvdread-devel
+%if 0%{?fedora} >= 34
+BuildRequires:  libdvdread-devel >= 6.1.1
+BuildRequires:  libdvdnav-devel >= 6.1.0
+%else
+BuildRequires:  libdvdread-devel 
 BuildRequires:  libdvdnav-devel
+%endif
 #
 Obsoletes:      mplayer-fonts
 Requires:       faad2-libs >= %{faad2min}
@@ -417,6 +422,9 @@ update-desktop-database &>/dev/null || :
 %{_datadir}/mplayer/*.fp
 
 %changelog
+
+* Sun Nov 01 2020 Unitedrpms Project <unitedrpms AT protonmail DOT com> 1.4-14
+- Updated to current svn revision
 
 * Mon Sep 28 2020 Unitedrpms Project <unitedrpms AT protonmail DOT com> 1.4-13
 - Updated to current svn revision
