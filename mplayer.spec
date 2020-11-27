@@ -19,7 +19,7 @@
 
 Name:           mplayer
 Version:        1.4
-Release:        14%{?dist}
+Release:        15%{?dist}
 Summary:        Movie player playing most video formats and DVDs
 License:        GPLv2+ or GPLv3+
 URL:            http://www.mplayerhq.hu/
@@ -97,7 +97,7 @@ BuildRequires:  lzo-devel >= 2
 BuildRequires:  pulseaudio-libs-devel
 BuildRequires:  speex-devel >= 1.1
 BuildRequires:  twolame-devel
-BuildRequires:  x264-devel >= 0.159
+BuildRequires:  x264-devel >= 1:0.161
 BuildRequires:  xvidcore-devel >= 0.9.2
 BuildRequires:  yasm
 BuildRequires:  gcc-c++
@@ -422,6 +422,9 @@ update-desktop-database &>/dev/null || :
 %{_datadir}/mplayer/*.fp
 
 %changelog
+
+* Mon Nov 23 2020 Unitedrpms Project <unitedrpms AT protonmail DOT com> 1.4-15
+- Rebuilt for x264
 
 * Sun Nov 01 2020 Unitedrpms Project <unitedrpms AT protonmail DOT com> 1.4-14
 - Updated to current svn revision
