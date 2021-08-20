@@ -6,7 +6,7 @@
 # Globals for svn 
 # Get current revision:
 # svn info svn://svn.mplayerhq.hu/mplayer/trunk 
-%global svn_rev 38202
+%global svn_rev 38313
 %global svn_url svn://svn.mplayerhq.hu/mplayer/trunk
 %global svn_ver .svn%{svn_rev}
 
@@ -19,7 +19,7 @@
 
 Name:           mplayer
 Version:        1.4
-Release:        15%{?dist}
+Release:        16%{?dist}
 Summary:        Movie player playing most video formats and DVDs
 License:        GPLv2+ or GPLv3+
 URL:            http://www.mplayerhq.hu/
@@ -97,7 +97,7 @@ BuildRequires:  lzo-devel >= 2
 BuildRequires:  pulseaudio-libs-devel
 BuildRequires:  speex-devel >= 1.1
 BuildRequires:  twolame-devel
-BuildRequires:  x264-devel >= 1:0.161
+BuildRequires:  x264-devel >= 1:0.163
 BuildRequires:  xvidcore-devel >= 0.9.2
 BuildRequires:  yasm
 BuildRequires:  gcc-c++
@@ -422,6 +422,9 @@ update-desktop-database &>/dev/null || :
 %{_datadir}/mplayer/*.fp
 
 %changelog
+
+* Mon Aug 16 2021 Unitedrpms Project <unitedrpms AT protonmail DOT com> 1.4-16
+- Rebuilt for x264
 
 * Mon Nov 23 2020 Unitedrpms Project <unitedrpms AT protonmail DOT com> 1.4-15
 - Rebuilt for x264
