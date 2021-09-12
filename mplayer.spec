@@ -17,6 +17,10 @@
 %bcond_without _vpx
 %endif
 
+%define ffmpegversion   4.4
+
+%global _lto_cflags %{nil}
+
 Name:           mplayer
 Version:        1.4
 Release:        16%{?dist}
@@ -47,8 +51,10 @@ Source19:	http://www.mplayerhq.hu/MPlayer/skins/webby-1.4.tar.bz2
 Source20:	http://www.mplayerhq.hu/MPlayer/skins/xanim-1.8.tar.bz2
 Source21:	hu.mplayerhq.mplayer.metainfo.xml
 
+Source22:	http://ffmpeg.org/releases/ffmpeg-%{ffmpegversion}.tar.xz
+
 # use system FFmpeg libraries and use roff include statements instead of symlinks
-Patch0:          mplayer-ffmpeg.patch
+#Patch0:          mplayer-ffmpeg.patch
 # set defaults for Fedora
 Patch1:         mplayer-config.patch
 # Include Samba
@@ -101,6 +107,8 @@ BuildRequires:  x264-devel >= 1:0.163
 BuildRequires:  xvidcore-devel >= 0.9.2
 BuildRequires:  yasm
 BuildRequires:  gcc-c++
+BuildRequires:  git
+BuildRequires:  pkgconf-pkg-config
 
 # BuildRequires: arts-devel
 BuildRequires: libXxf86dga-devel
@@ -212,7 +220,6 @@ This package contains various scripts from MPlayer TOOLS directory.
     --libdir=%{_libdir} \\\
     --codecsdir=%{codecdir} \\\
     --datadir=%{_datadir}/mplayer \\\
-    --disable-ffmpeg_a \\\
     --enable-runtime-cpudetection \\\
     --disable-arts \\\
     --disable-liblzo \\\
@@ -229,6 +236,9 @@ This package contains various scripts from MPlayer TOOLS directory.
     --enable-radio-capture \\\
     --language=all \\\
     --confdir=/etc/mplayer \\\
+    
+    
+#     --disable-ffmpeg_a
 
 %prep
 %autosetup -n %{name}-%{svn_rev} -p1
@@ -236,19 +246,34 @@ This package contains various scripts from MPlayer TOOLS directory.
 # vdpau FIX
 sed -i '/\#include <strings.h>/a #include <vdpau/vdpau_x11.h>' libvo/vo_vdpau.c
 
+sed -i 's|_prefix="/usr/local"|_prefix="/usr"|g' configure
+
 mkdir GUI
 cp -a `ls -1|grep -v GUI` GUI/
 
 ./version.sh
 
+pushd GUI
+rm -rf ffmpeg
+tar -xJf %{SOURCE22}
+mv ffmpeg-%{ffmpegversion} ffmpeg
+
+sed -i "s|check_host_cflags -O3|check_host_cflags %{optflags}|" ffmpeg/configure
+
+sed -i 's|_prefix="/usr/local"|_prefix="/usr"|g' configure
 
 %build
 
 pushd GUI
-%{mp_configure}--enable-gui --disable-mencoder
+export CC=gcc
+export CXX=g++
+%{mp_configure}--enable-gui --disable-mencoder  
 
 %{__make} V=1 %{?_smp_mflags}
 popd
+
+export CC=gcc
+export CXX=g++
 
 %{mp_configure}--disable-gui --enable-mencoder
 
