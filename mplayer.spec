@@ -6,7 +6,7 @@
 # Globals for svn 
 # Get current revision:
 # svn info svn://svn.mplayerhq.hu/mplayer/trunk 
-%global svn_rev 38313
+%global svn_rev 38329
 %global svn_url svn://svn.mplayerhq.hu/mplayer/trunk
 %global svn_ver .svn%{svn_rev}
 
@@ -23,7 +23,7 @@
 
 Name:           mplayer
 Version:        1.4
-Release:        16%{?dist}
+Release:        17%{?dist}
 Summary:        Movie player playing most video formats and DVDs
 License:        GPLv2+ or GPLv3+
 URL:            http://www.mplayerhq.hu/
@@ -59,6 +59,7 @@ Source22:	http://ffmpeg.org/releases/ffmpeg-%{ffmpegversion}.tar.xz
 Patch1:         mplayer-config.patch
 # Include Samba
 Patch2:         include-samba-4.0.patch
+Patch3:		ffmpeg_fix.patch
 
 BuildRequires:  SDL-devel
 BuildRequires:  a52dec-devel
@@ -68,7 +69,7 @@ BuildRequires:  alsa-lib-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  enca-devel
 BuildRequires:  faad2-devel >= %{faad2min}
-BuildRequires:  ffmpeg-devel >= 4.3
+BuildRequires:  ffmpeg-devel >= 5.0
 BuildRequires:  fontconfig-devel
 BuildRequires:  freetype-devel >= 2.0.9
 BuildRequires:  fribidi-devel
@@ -217,10 +218,10 @@ This package contains various scripts from MPlayer TOOLS directory.
 
 %define mp_configure \
 ./configure --prefix=/usr \\\
+    --enable-runtime-cpudetection \\\
     --libdir=%{_libdir} \\\
     --codecsdir=%{codecdir} \\\
     --datadir=%{_datadir}/mplayer \\\
-    --enable-runtime-cpudetection \\\
     --disable-arts \\\
     --disable-liblzo \\\
     --disable-speex \\\
@@ -235,10 +236,12 @@ This package contains various scripts from MPlayer TOOLS directory.
     --enable-radio \\\
     --enable-radio-capture \\\
     --language=all \\\
+    --disable-ffmpeg_a \\\
+    --extra-cflags="$RPM_OPT_FLAGS" \\\
     --confdir=/etc/mplayer \\\
     
     
-#     --disable-ffmpeg_a
+#    --disable-ffmpeg_a \\\
 
 %prep
 %autosetup -n %{name}-%{svn_rev} -p1
@@ -258,8 +261,6 @@ rm -rf ffmpeg
 tar -xJf %{SOURCE22}
 mv ffmpeg-%{ffmpegversion} ffmpeg
 
-sed -i "s|check_host_cflags -O3|check_host_cflags %{optflags}|" ffmpeg/configure
-
 sed -i 's|_prefix="/usr/local"|_prefix="/usr"|g' configure
 
 %build
@@ -267,15 +268,15 @@ sed -i 's|_prefix="/usr/local"|_prefix="/usr"|g' configure
 pushd GUI
 export CC=gcc
 export CXX=g++
-%{mp_configure}--enable-gui --disable-mencoder  
+
+%{mp_configure}--enable-gui --disable-mencoder   
 
 %{__make} V=1 %{?_smp_mflags}
 popd
 
 export CC=gcc
 export CXX=g++
-
-%{mp_configure}--disable-gui --enable-mencoder
+%{mp_configure}--disable-gui --enable-mencoder 
 
 %{__make} V=1 %{?_smp_mflags}
 
@@ -447,6 +448,10 @@ update-desktop-database &>/dev/null || :
 %{_datadir}/mplayer/*.fp
 
 %changelog
+
+* Sat Jan 22 2022 Unitedrpms Project <unitedrpms AT protonmail DOT com> 1.4-17
+- Rebuilt for ffmpeg
+- Updated to current svn revision
 
 * Mon Aug 16 2021 Unitedrpms Project <unitedrpms AT protonmail DOT com> 1.4-16
 - Rebuilt for x264

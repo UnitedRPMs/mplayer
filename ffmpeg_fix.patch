@@ -1,0 +1,12 @@
+diff -ruN orig/Makefile new/Makefile
+--- orig/Makefile	2022-01-29 13:47:51.000000000 -0600
++++ new/Makefile	2022-01-30 21:47:52.255849424 -0600
+@@ -753,7 +753,7 @@
+ codec-cfg-test$(EXESUF): HOSTCFLAGS := $(HOSTCFLAGS) -DTESTING
+ codec-cfg$(EXESUF) codecs2html$(EXESUF):  HOSTCFLAGS := $(HOSTCFLAGS) -DCODECS2HTML
+ codec-cfg$(EXESUF) codec-cfg-test$(EXESUF) codecs2html$(EXESUF): codec-cfg.c codec-cfg.h help_mp.h
+-	$(HOST_CC) $(HOSTCFLAGS) -o $@ $<
++	$(HOST_CC) $(HOSTCFLAGS) $(CFLAGS) -o $@ $<
+ 
+ codecs.conf.h: codec-cfg$(EXESUF) etc/codecs.conf
+ 	./$^ > $@
