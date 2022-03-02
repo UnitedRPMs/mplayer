@@ -133,6 +133,7 @@ BuildRequires:  libxml2
 BuildRequires:  libxslt
 
 # new make requires
+BuildRequires:	perl
 BuildRequires:  opencore-amr-devel
 BuildRequires:  libmng-devel
 BuildRequires:  schroedinger-devel
