@@ -6,7 +6,7 @@
 # Globals for svn 
 # Get current revision:
 # svn info svn://svn.mplayerhq.hu/mplayer/trunk 
-%global svn_rev 38329
+%global svn_rev 38359
 %global svn_url svn://svn.mplayerhq.hu/mplayer/trunk
 %global svn_ver .svn%{svn_rev}
 
@@ -17,13 +17,13 @@
 %bcond_without _vpx
 %endif
 
-%define ffmpegversion   4.4
+%define ffmpegversion   5.0
 
 %global _lto_cflags %{nil}
 
 Name:           mplayer
-Version:        1.4
-Release:        17%{?dist}
+Version:        1.5
+Release:        7%{?dist}
 Summary:        Movie player playing most video formats and DVDs
 License:        GPLv2+ or GPLv3+
 URL:            http://www.mplayerhq.hu/
@@ -448,6 +448,9 @@ update-desktop-database &>/dev/null || :
 %{_datadir}/mplayer/*.fp
 
 %changelog
+
+* Tue Mar 02 2022 Unitedrpms Project <unitedrpms AT protonmail DOT com> 1.5-7
+- Updated to 1.5
 
 * Sat Jan 22 2022 Unitedrpms Project <unitedrpms AT protonmail DOT com> 1.4-17
 - Rebuilt for ffmpeg
