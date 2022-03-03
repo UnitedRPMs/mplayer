@@ -133,7 +133,7 @@ BuildRequires:  libxml2
 BuildRequires:  libxslt
 
 # new make requires
-BuildRequires:	perl
+BuildRequires:	perl-generators
 BuildRequires:  opencore-amr-devel
 BuildRequires:  libmng-devel
 BuildRequires:  schroedinger-devel
@@ -450,7 +450,7 @@ update-desktop-database &>/dev/null || :
 
 %changelog
 
-* Tue Mar 02 2022 Unitedrpms Project <unitedrpms AT protonmail DOT com> 1.5-7
+* Wed Mar 02 2022 Unitedrpms Project <unitedrpms AT protonmail DOT com> 1.5-7
 - Updated to 1.5
 
 * Sat Jan 22 2022 Unitedrpms Project <unitedrpms AT protonmail DOT com> 1.4-17
